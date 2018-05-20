@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -7,8 +7,8 @@
     <ProjectGuid>{A8624264-5ADB-4034-82A5-7CC2C650D47C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BTMLLOSColorsMod</RootNamespace>
-    <AssemblyName>BTMLLOSColorsMod</AssemblyName>
+    <RootNamespace>BTMLColorLOSMod</RootNamespace>
+    <AssemblyName>BTMLColorLOSMod</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,18 +33,12 @@
     <Reference Include="0Harmony, Version=1.0.9.1, Culture=neutral, PublicKeyToken=null">
       <HintPath>bin\Debug\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="BattleTechModLoader, Version=0.2.0.28072, Culture=neutral, PublicKeyToken=null">
-      <HintPath>bin\Debug\BattleTechModLoader.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="BattleTechModLoader">
-      <HintPath>..\..\..\..\Downloads\BattleTechModLoader-v0.2.0\BattleTechModLoader.dll</HintPath>
-    </Reference>
     <Reference Include="0Harmony">
       <HintPath>..\..\..\..\Downloads\BattleTechModLoader-v0.2.0\0Harmony.dll</HintPath>
     </Reference>
