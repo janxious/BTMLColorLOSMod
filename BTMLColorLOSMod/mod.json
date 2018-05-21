@@ -13,6 +13,7 @@
   "ConflictsWith": [],
 
   "Settings": {
-    "indirectLineOfFireArcColor": [1, 0.5, 0, 1]
+    "indirectLineOfFireArcColor": [ 1, 0.5, 0, 1 ],
+    "indirectLineOfFireArcDashed":  true
   }
 }

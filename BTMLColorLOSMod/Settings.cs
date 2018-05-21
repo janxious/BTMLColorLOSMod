@@ -10,8 +10,15 @@ namespace BTMLColorLOSMod
             set => IndirectLineOfFireArcColor = new Color(value[0], value[1], value[2], value[3]);
         }
 
+        public bool indirectLineOfFireArcDashed
+        {
+            set => IndirectLineOfFireArcDashed = value;
+        }
+
         // The color to be patched into the game for coloring indirect lines of fire
         // Defaults to magenta if the user gives us funky data so it should stand out
         public Color IndirectLineOfFireArcColor = Color.magenta;
+
+        public bool IndirectLineOfFireArcDashed = false;
     }
 }
