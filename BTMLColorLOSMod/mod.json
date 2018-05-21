@@ -13,6 +13,16 @@
   "ConflictsWith": [],
 
   "Settings": {
-    "indirectLineOfFireArcColor": [1, 0.5, 0, 1]
+    "indirectLineOfFireArcActive": true,
+    "indirectLineOfFireArcColor": [1, 0.5, 0, 1],
+    "indirectLineOfFireArcDashed": false,
+    "indirectLineOfFireArcDashedThicknessMultiplier":  1.75,
+    
+    "obstructedLineOfFireAttackerSideActive": false,
+    "obstructedLineOfFireAttackerSideColor": [0, 0.25, 1, 1],
+    
+    "obstructedLineOfFireTargetSideActive": true,
+    "obstructedLineOfFireTargetSideColor": [0.6, 0, 1, 0.9],
+    "obstructedLineOfFireTargetSiteThicknessMultiplier": 1.25
   }
 }

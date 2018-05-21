@@ -3,6 +3,7 @@ using BattleTech;
 using BattleTech.UI;
 using Harmony;
 using UnityEngine;
+using static BTMLColorLOSMod.BTMLColorLOSMod;
 
 namespace BTMLColorLOSMod
 {
@@ -20,10 +21,7 @@ namespace BTMLColorLOSMod
             ref bool isMelee,
             WeaponRangeIndicators __instance)
         {
-            // var colorSettings = SettingsHelper.LoadSettings();
             CombatHUD HUD = (CombatHUD) ReflectionHelper.GetPrivateProperty(__instance, "HUD");
-            // set up this line drawer because it has some materials we want later
-
             if (__instance.DEBUG_showLOSLines)
             {
                 DEBUG_LOSLineDrawer debugDrawer =
@@ -144,6 +142,7 @@ namespace BTMLColorLOSMod
 
                                 line.SetPosition(1, vector2);
                             }
+                            // LOF obstructed
                             else
                             {
                                 if (target == HUD.SelectionHandler.ActiveState.FacingEnemy)
@@ -162,15 +161,30 @@ namespace BTMLColorLOSMod
                                 Vector3 collisionPoint = previewInfo.collisionPoint;
                                 collisionPoint = Vector3.Project(collisionPoint - vector, vector2 - vector) + vector;
                                 line.SetPosition(1, collisionPoint);
+                                if (ModSettings.ObstructedLineOfFireAttackerSideActive)
+                                {
+                                    line.material.color = Color.white;
+                                    line.startColor = line.endColor = ModSettings.ObstructedLineOfFireAttackerSideColor;
+                                }
+
                                 LineRenderer line2 =
                                     (LineRenderer) ReflectionHelper.InvokePrivateMethode(__instance, "getLine",
                                         new object[] { });
                                 line2.positionCount = 2;
-                                line2.startWidth = __instance.LOSWidthBlocked;
-                                line2.endWidth = __instance.LOSWidthBlocked;
+                                line2.startWidth = __instance.LOSWidthBlocked *
+                                                   ModSettings.ObstructedLineOfFireTargetSiteThicknessMultiplier;
+                                line2.endWidth = __instance.LOSWidthBlocked *
+                                                 ModSettings.ObstructedLineOfFireTargetSiteThicknessMultiplier;
+                                ;
                                 line2.material = __instance.MaterialInRange;
-                                LineRenderer lineRenderer5 = line2;
-                                Color color2 = lineRenderer5.startColor = (line2.endColor = __instance.LOSBlocked);
+
+                                line2.startColor = line2.endColor = __instance.LOSBlocked;
+                                if (ModSettings.ObstructedLineOfFireTargetSideActive)
+                                {
+                                    line2.startColor = line2.endColor = ModSettings.ObstructedLineOfFireTargetSideColor;
+                                    line2.material.color = Color.white;
+                                }
+
                                 line2.SetPosition(0, collisionPoint);
                                 line2.SetPosition(1, vector2);
                                 GameObject coverIcon =
@@ -187,18 +201,33 @@ namespace BTMLColorLOSMod
                         // arc shot
                         else
                         {
-                            // other than formatting this block is the only thing that changed from the decompiled code
+                            if (ModSettings.IndirectLineOfFireArcActive)
+                            {
+                                float shotQuality = (float) ReflectionHelper.InvokePrivateMethode(__instance,
+                                    "GetShotQuality", new object[] {selectedActor, position, rotation, target});
+                                Color color6 = Color.Lerp(
+                                    Color.clear,
+                                    ModSettings.IndirectLineOfFireArcColor,
+                                    shotQuality);
+                                if (ModSettings.IndirectLineOfFireArcDashed)
+                                {
+                                    line.material = __instance.MaterialOutOfRange;
+                                    line.material.color = color6;
+                                    line.endWidth = __instance.LOSWidthEnd *
+                                                    ModSettings
+                                                        .IndirectLineOfFireArcDashedThicknessMultiplier; // dashes are harder to see,
+                                    line.startWidth = __instance.LOSWidthBegin *
+                                                      ModSettings
+                                                          .IndirectLineOfFireArcDashedThicknessMultiplier; // so make 'em bigger
+                                }
+                                else
+                                {
+                                    line.material.color = Color.white;
+                                    line.endColor = line.startColor = color6;
+                                }
+                            }
+
                             Vector3[] pointsForArc = WeaponRangeIndicators.GetPointsForArc(18, 30f, vector, vector2);
-                            float shotQuality = (float) ReflectionHelper.InvokePrivateMethode(__instance,
-                                "GetShotQuality", new object[] {selectedActor, position, rotation, target});
-                            // alright future me, this is probably destructive in some way, but 
-                            // this lets us set the color of the line via that color6 bit.
-                            line.material.color = Color.white;
-                            Color color6 = Color.Lerp(
-                                Color.clear,
-                                BTMLColorLOSMod.ModSettings.IndirectLineOfFireArcColor, 
-                                shotQuality);
-                            line.endColor = (line.startColor = color6);
                             line.positionCount = 18;
                             line.SetPositions(pointsForArc);
                         }
