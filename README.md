@@ -22,3 +22,16 @@ Downloads can be found on [github](https://github.com/janxious/BTMLColorLOSMod/r
 - Put the `BTMLColorLOSMod.dll` and `mod.json` files into `\BATTLETECH\Mods\BTMLColorLOSMod` folder.
 - If you want to change the settings do so in the mod.json.
 - Start the game.
+
+
+## Special Thanks
+
+HBS, @Mpstark, @Morphyum, @gponick
+
+
+## New HBS Patch Instructions
+
+* pop open VS
+* grab the latest version of the assembly
+* copy the new version of the methods in `original_src` over the existing ones
+* see if anything important changed via git
