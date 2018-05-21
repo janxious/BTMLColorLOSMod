@@ -189,22 +189,23 @@ namespace BTMLColorLOSMod
                         {
                             // other than formatting this block is the only thing that changed from the decompiled code
                             Vector3[] pointsForArc = WeaponRangeIndicators.GetPointsForArc(18, 30f, vector, vector2);
+
+                            float shotQuality = (float) ReflectionHelper.InvokePrivateMethode(__instance,
+                                "GetShotQuality", new object[] {selectedActor, position, rotation, target});
+                            // alright future me, this is probably destructive in some way, but 
+                            // this lets us set the color of the line via that color6 bit.
+                            Color color6 = Color.Lerp(
+                                Color.clear,
+                                BTMLColorLOSMod.ModSettings.IndirectLineOfFireArcColor,
+                                shotQuality);
                             if (BTMLColorLOSMod.ModSettings.IndirectLineOfFireArcDashed)
                             {
                                 line.material = __instance.MaterialOutOfRange;
-                                line.material.color = BTMLColorLOSMod.ModSettings.IndirectLineOfFireArcColor;
+                                line.material.color = color6;
                             }
                             else
-                            { 
-                                float shotQuality = (float) ReflectionHelper.InvokePrivateMethode(__instance,
-                                    "GetShotQuality", new object[] {selectedActor, position, rotation, target});
-                                // alright future me, this is probably destructive in some way, but 
-                                // this lets us set the color of the line via that color6 bit.
+                            {
                                 line.material.color = Color.white;
-                                Color color6 = Color.Lerp(
-                                    Color.clear,
-                                    BTMLColorLOSMod.ModSettings.IndirectLineOfFireArcColor, 
-                                    shotQuality);
                                 line.endColor = (line.startColor = color6);
                             }
                             line.positionCount = 18;
