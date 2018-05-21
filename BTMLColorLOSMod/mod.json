@@ -1,0 +1,18 @@
+﻿{
+  "Name": "BTMLColorLOSMod",
+  "Enabled": true,
+
+  "Version": "0.2.0",
+
+  "Author": "janxious",
+  "Website": "https://github.com/janxious/BTMLColorLOSMod",
+
+  "DLL": "BTMLColorLOSMod.dll",
+  "DLLEntryPoint": "BTMLColorLOSMod.BTMLColorLOSMod.Init",
+  "DependsOn": [],
+  "ConflictsWith": [],
+
+  "Settings": {
+    "indirectLineOfFireArcColor": [1, 0.5, 0, 1]
+  }
+}
