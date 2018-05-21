@@ -2,15 +2,16 @@
 
 namespace BTMLColorLOSMod
 {
+    // the properties in in here are to be a deserializer step from JSON format
+    // into the C# variables used by the mod.
     public class Settings
     {
-
         #region IndirectLineOfFireArcOptions
+
         // The color to be patched into the game for coloring indirect lines of fire
         // Defaults to magenta if the user gives us funky data so it should stand out
         public Color IndirectLineOfFireArcColor = Color.magenta;
 
-        // the float here is to hold deserialized JSON data coming from ModTek and convert it to a UnityEngine.Color
         public float[] indirectLineOfFireArcColor
         {
             set => IndirectLineOfFireArcColor = new Color(value[0], value[1], value[2], value[3]);
@@ -19,66 +20,79 @@ namespace BTMLColorLOSMod
         // Controls whether we set the Indirect Line Of Fire Line to Dashed (true: dashed, false: solid)
         public bool IndirectLineOfFireArcDashed = false;
 
-        // the bool here is to hold the deserialized JSON data coming from ModTek and convert it to a boolean
         public bool indirectLineOfFireArcDashed
         {
             set => IndirectLineOfFireArcDashed = value;
         }
 
-        // Controls the thickness of the Indirect Line of Fire Dashes
-        public float IndirectLineOfFireArcDashThickness = 1.75f;
+        // Controls the thickness of the Indirect Line of Fire when dashed
+        public float IndirectLineOfFireArcDashedThicknessMultiplier = 1.75f;
 
-        // the float here is to hold the deserialized JSON data coming from ModTek and convert it to a boolean
-        public float indirectLineOfFireArcDashThickness
+        public float indirectLineOfFireArcDashedThicknessMultiplier
         {
-            set => IndirectLineOfFireArcDashThickness = value;
+            set => IndirectLineOfFireArcDashedThicknessMultiplier = value;
         }
+
+        // Controls whether we change anything about the Indirect Line of Fire arc style.
+        public bool IndirectLineOfFireArcActive = true;
+
+        public bool indirectLineOfFireArcActive
+        {
+            set => IndirectLineOfFireArcActive = value;
+        }
+
         #endregion
 
+        #region obstructedLineOfFireAttackerSide
 
-        #region BlockedLineOfFireLine1
-        // The color to be patched into the game for the coloring obstructed Line of Fire (LOF)'s first part
-        //Defaults to magenta if the user gives us funky data so it should stand out
-        public Color BlockedLineOfFireLine1Color = Color.magenta;
+        // The color to be patched into the game for the coloring obstructed Line of Fire (LOF)'s part between
+        // the shooter and obstruction
+        // Defaults to magenta if the user gives us funky data so it should stand out
+        public Color ObstructedLineOfFireAttackerSideColor = Color.magenta;
 
-        // the float here is to hold the deserialized JSON data coming from ModTek and convert it to a UnityEngine.Color
-        public float[] blockedLineOfFireLine1Color
+        public float[] obstructedLineOfFireAttackerSideColor
         {
-            set => BlockedLineOfFireLine1Color = new Color(value[0], value[1], value[2], value[3]);
+            set => ObstructedLineOfFireAttackerSideColor = new Color(value[0], value[1], value[2], value[3]);
         }
 
-        // Controls whether we change the color of the second part of an obstructed LOF line.
-        public bool BlockedLineOfFireLine1Active = true;
+        // Controls whether we change the color of the near part of an obstructed LOF line.
+        public bool ObstructedLineOfFireAttackerSideActive = true;
 
-
-        // the bool here is to hold the deserialized JSON data coming from ModTek and convert it to a boolean
-        public bool blockedLineOfFireLine1Active
+        public bool obstructedLineOfFireAttackerSideActive
         {
-            set => BlockedLineOfFireLine1Active = value;
+            set => ObstructedLineOfFireAttackerSideActive = value;
         }
+
         #endregion
 
-        #region BlockedLineOfFireLine2
-        // The color to be patched into the game for the coloring obstructed Line of Fire (LOF)'s first part
-        //Defaults to magenta if the user gives us funky data so it should stand out
-        public Color BlockedLineOfFireLine2Color = Color.magenta;
+        #region obstructedLineOfFireTargetSide
 
-        // the float here is to hold the deserialized JSON data coming from ModTek and convert it to a UnityEngine.Color
-        public float[] blockedLineOfFireLine2Color
+        // The color to be patched into the game for the coloring obstructed Line of Fire (LOF)'s part between
+        // the obstruction and target.
+        // Defaults to magenta if the user gives us funky data so it should stand out
+        public Color ObstructedLineOfFireTargetSideColor = Color.magenta;
+
+        public float[] obstructedLineOfFireTargetSideColor
         {
-            set => BlockedLineOfFireLine2Color = new Color(value[0], value[1], value[2], value[3]);
+            set => ObstructedLineOfFireTargetSideColor = new Color(value[0], value[1], value[2], value[3]);
         }
 
-        // Controls whether we change the color of the second part of an obstructed LOF line.
-        public bool BlockedLineOfFireLine2Active = true;
+        // Controls whether we change the color of the far part of an obstructed LOF line.
+        public bool ObstructedLineOfFireTargetSideActive = true;
 
-
-        // the bool here is to hold the deserialized JSON data coming from ModTek and convert it to a boolean
-        public bool blockedLineOfFireLine2Active
+        public bool obstructedLineOfFireTargetSideActive
         {
-            set => BlockedLineOfFireLine2Active = value;
+            set => ObstructedLineOfFireTargetSideActive = value;
         }
+
+        // Controls the thickness of the obstructed LOF target side line.
+        public float ObstructedLineOfFireTargetSiteThicknessMultiplier = 1.75f;
+
+        public float obstructedLineOfFireTargetSiteThicknessMultiplier
+        {
+            set => ObstructedLineOfFireTargetSiteThicknessMultiplier = value;
+        }
+
         #endregion
-
     }
 }
