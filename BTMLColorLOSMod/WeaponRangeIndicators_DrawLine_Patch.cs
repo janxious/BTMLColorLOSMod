@@ -144,6 +144,7 @@ namespace BTMLColorLOSMod
 
                                 line.SetPosition(1, vector2);
                             }
+                            // LOF obstructed
                             else
                             {
                                 if (target == HUD.SelectionHandler.ActiveState.FacingEnemy)
@@ -162,6 +163,11 @@ namespace BTMLColorLOSMod
                                 Vector3 collisionPoint = previewInfo.collisionPoint;
                                 collisionPoint = Vector3.Project(collisionPoint - vector, vector2 - vector) + vector;
                                 line.SetPosition(1, collisionPoint);
+                                if(BTMLColorLOSMod.ModSettings.BlockedLOFLine1Active)
+                                {
+                                    line.material.color = Color.white;
+                                    line.startColor = line.endColor = BTMLColorLOSMod.ModSettings.BlockedLOFLine1Color;
+                                }
                                 LineRenderer line2 =
                                     (LineRenderer) ReflectionHelper.InvokePrivateMethode(__instance, "getLine",
                                         new object[] { });
@@ -169,8 +175,14 @@ namespace BTMLColorLOSMod
                                 line2.startWidth = __instance.LOSWidthBlocked;
                                 line2.endWidth = __instance.LOSWidthBlocked;
                                 line2.material = __instance.MaterialInRange;
+
                                 LineRenderer lineRenderer5 = line2;
                                 Color color2 = lineRenderer5.startColor = (line2.endColor = __instance.LOSBlocked);
+                                if (BTMLColorLOSMod.ModSettings.BlockedLOFLine2Active)
+                                {
+                                    line2.startColor = line2.endColor = BTMLColorLOSMod.ModSettings.BlockedLOFLine2Color;
+                                    line2.material.color = BTMLColorLOSMod.ModSettings.BlockedLOFLine2Color;
+                                }
                                 line2.SetPosition(0, collisionPoint);
                                 line2.SetPosition(1, vector2);
                                 GameObject coverIcon =
