@@ -1,6 +1,11 @@
 # BTMLColorLOSMod
 BattleTech Mod (using [BTML](https://github.com/Mpstark/BattleTechModLoader) and [ModTek](https://github.com/Mpstark/ModTek)) that changes the color of indirect firing lines in battle to a different color from direct.
 
+You've been in the situation where the lines are both red and you move and then realize you actually don't have an alpha strike. The orange-yellow line is indirect fire:
+
+<img width="201" alt="screen shot 2018-05-20 at 6 53 02 pm" src="https://user-images.githubusercontent.com/50124/40288821-11b0066e-5c83-11e8-98c2-aba640c7dc73.png">
+
+
 ## Features
 - Change the color of indirect line of fire indicator drawn between the currently controlled mech and enemy targets
 - Add dashes to the indirect line of fire indicator drawn between the currently controlled mech and enemy targets
@@ -29,6 +34,34 @@ Setting | Type | Default | Description
 `obstructedLineOfFireTargetSiteThicknessMultiplier` | `float` | `1.25` | change how thick the obstructed firing line looks on the target side
 
 Note that the last number in the above `float[4]` controls alpha transparency, so if you make it a `0` you will probably not have an indirect firing line at all. All numbers should be between `0` and `1`.
+
+
+## More Screenshots
+
+Side angle
+
+<img width="576" alt="screen shot 2018-05-20 at 10 57 16 pm" src="https://user-images.githubusercontent.com/50124/40288819-0ed5a9f8-5c83-11e8-8889-ddf65437f444.png">
+
+
+With the settings on cyan instead of orange
+
+<img width="490" alt="screen shot 2018-05-20 at 3 59 46 pm" src="https://user-images.githubusercontent.com/50124/40288810-0a8ad8f0-5c83-11e8-8234-8598580d4631.png">
+
+
+Marvelous
+
+<img width="937" alt="screen shot 2018-05-20 at 10 29 41 pm" src="https://user-images.githubusercontent.com/50124/40288822-13ecd8bc-5c83-11e8-8111-8d17f439f9f1.png">
+
+
+Dashes!
+
+<img width="478" alt="screen shot 2018-05-21 at 12 40 23 am" src="https://user-images.githubusercontent.com/50124/40314402-6610d090-5ce6-11e8-8700-92a0de80f015.png">
+
+
+Obstructed Colors!
+
+<img width="898" alt="screen shot 2018-05-21 at 10 12 46 am" src="https://user-images.githubusercontent.com/50124/40314408-6bf2caa4-5ce6-11e8-887f-c165546abb1a.png">
+<img width="886" alt="screen shot 2018-05-21 at 10 27 46 am" src="https://user-images.githubusercontent.com/50124/40314409-6c17545a-5ce6-11e8-98f2-275870b183b6.png">
 
 ## Special Thanks
 
