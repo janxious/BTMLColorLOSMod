@@ -163,10 +163,10 @@ namespace BTMLColorLOSMod
                                 Vector3 collisionPoint = previewInfo.collisionPoint;
                                 collisionPoint = Vector3.Project(collisionPoint - vector, vector2 - vector) + vector;
                                 line.SetPosition(1, collisionPoint);
-                                if(BTMLColorLOSMod.ModSettings.BlockedLOFLine1Active)
+                                if(BTMLColorLOSMod.ModSettings.BlockedLineOfFireLine1Active)
                                 {
                                     line.material.color = Color.white;
-                                    line.startColor = line.endColor = BTMLColorLOSMod.ModSettings.BlockedLOFLine1Color;
+                                    line.startColor = line.endColor = BTMLColorLOSMod.ModSettings.BlockedLineOfFireLine1Color;
                                 }
                                 LineRenderer line2 =
                                     (LineRenderer) ReflectionHelper.InvokePrivateMethode(__instance, "getLine",
@@ -178,10 +178,10 @@ namespace BTMLColorLOSMod
 
                                 LineRenderer lineRenderer5 = line2;
                                 Color color2 = lineRenderer5.startColor = (line2.endColor = __instance.LOSBlocked);
-                                if (BTMLColorLOSMod.ModSettings.BlockedLOFLine2Active)
+                                if (BTMLColorLOSMod.ModSettings.BlockedLineOfFireLine2Active)
                                 {
-                                    line2.startColor = line2.endColor = BTMLColorLOSMod.ModSettings.BlockedLOFLine2Color;
-                                    line2.material.color = BTMLColorLOSMod.ModSettings.BlockedLOFLine2Color;
+                                    line2.startColor = line2.endColor = BTMLColorLOSMod.ModSettings.BlockedLineOfFireLine2Color;
+                                    line2.material.color = BTMLColorLOSMod.ModSettings.BlockedLineOfFireLine2Color;
                                 }
                                 line2.SetPosition(0, collisionPoint);
                                 line2.SetPosition(1, vector2);
@@ -214,6 +214,8 @@ namespace BTMLColorLOSMod
                             {
                                 line.material = __instance.MaterialOutOfRange;
                                 line.material.color = color6;
+                                line.endWidth = __instance.LOSWidthEnd * BTMLColorLOSMod.ModSettings.IndirectLineOfFireArcDashThickness;      // dashes are harder to see,
+                                line.startWidth = __instance.LOSWidthBegin * BTMLColorLOSMod.ModSettings.IndirectLineOfFireArcDashThickness;  // so make 'em bigger
                             }
                             else
                             {
