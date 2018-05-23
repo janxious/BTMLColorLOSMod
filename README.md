@@ -21,6 +21,10 @@ Downloads can be found on [Github](https://github.com/janxious/BTMLColorLOSMod/r
 - Start the game.
 
 ## Settings
+
+The `Color` variables below (`float[4]`) are RGBA colors, where the intensity of the color channel is a decimal number between `0` and `1`. The last number is alpha transparency so if you make it a `0` you will probably not have a line at all. You can use a color picker like [the W3's](https://www.w3schools.com/colors/colors_picker.asp) and then divide the individual values by 255 to get the decimal you need. For example hex color `#66ff33` / rgb color `rgb(102, 255, 51)` becomes `[102/255, 255/255, 51/255, 1]`, which works out to `[0.4, 1, 0.2, 1]`.
+
+
 Setting | Type | Default | Description
 --- | --- | --- | ---
 `indirectLineOfFireArcActive` | `bool` | `true` | change the look of the indirect firing line arc
@@ -33,7 +37,7 @@ Setting | Type | Default | Description
 `obstructedLineOfFireTargetSideColor` | `float[4]` | `[0.6, 0, 1, 0.9]` (purple) | line of fire color nearest the target when fire is obstructed
 `obstructedLineOfFireTargetSiteThicknessMultiplier` | `float` | `1.25` | change how thick the obstructed firing line looks on the target side
 
-Note that the last number in the above `float[4]` controls alpha transparency, so if you make it a `0` you will probably not have an indirect firing line at all. All numbers should be between `0` and `1`.
+
 
 
 ## More Screenshots
