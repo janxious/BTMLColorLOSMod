@@ -113,29 +113,52 @@ namespace BTMLColorLOSMod
                                 "GetShotQuality", new object[] {selectedActor, position, rotation, target});
                             Color color5 = Color.Lerp(Color.clear, __instance.LOSInRange, shotQuality);
                             LineRenderer lineRenderer4 = line;
-                            Color color2 = lineRenderer4.startColor = (line.endColor = color5);
+                            Color color2 = lineRenderer4.startColor = line.endColor = color5;
                         }
 
                         line.material = __instance.MaterialInRange;
                         // straight line shot
                         if (previewInfo.HasLOF)
                         {
+                            // LOF unobstructed
                             line.positionCount = 2;
                             line.SetPosition(0, vector);
                             Vector3 vector4 = vector - vector2;
                             vector4.Normalize();
                             vector4 *= __instance.LineEndOffset;
                             vector2 += vector4;
+
                             if (previewInfo.LOFLevel == LineOfFireLevel.LOFClear)
                             {
+                                // ???
                                 if (target == HUD.SelectionHandler.ActiveState.FacingEnemy)
                                 {
+                                    Logger.LogLine("LOF facing");
+
+                                    if (ModSettings.DirectLineOfFireActive)
+                                    {
+
+                                        float shotQuality = (float) ReflectionHelper.InvokePrivateMethode(__instance,
+                                            "GetShotQuality", new object[] {selectedActor, position, rotation, target});
+                                        line.material.color = Color.white;
+                                        line.endColor = line.startColor = Color.Lerp(Color.clear, ModSettings.DirectLineOfFireColor, shotQuality);
+                                    }
                                     line.startWidth =
                                         __instance.LOSWidthBegin * __instance.LOSWidthFacingTargetMultiplier;
                                     line.endWidth = __instance.LOSWidthEnd * __instance.LOSWidthFacingTargetMultiplier;
                                 }
                                 else
                                 {
+                                    // enemy in firing arc and have shot
+                                    if (ModSettings.DirectLineOfFireActive)
+                                    {
+
+                                        float shotQuality = (float) ReflectionHelper.InvokePrivateMethode(__instance,
+                                            "GetShotQuality", new object[] {selectedActor, position, rotation, target});
+                                        line.material.color = Color.white;
+                                        line.endColor = line.startColor = Color.Lerp(Color.clear, ModSettings.DirectLineOfFireColor, shotQuality);
+                                    }
+
                                     line.startWidth = __instance.LOSWidthBegin;
                                     line.endWidth = __instance.LOSWidthEnd;
                                 }

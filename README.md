@@ -5,8 +5,10 @@ You've been in the situation where the lines are both red and you move and then 
 
 <img width="201" alt="screen shot 2018-05-20 at 6 53 02 pm" src="https://user-images.githubusercontent.com/50124/40288821-11b0066e-5c83-11e8-98c2-aba640c7dc73.png">
 
+The defaults for this mod setup the indirect line and the nearer target obstructed line to stand out. You can change settings as described below to make the lines very customized in appearance.
 
 ## Features
+- Change the color of direct line of fire indicator drawn between the currently controlled mech and enemy targets
 - Change the color of indirect line of fire indicator drawn between the currently controlled mech and enemy targets
 - Add dashes to the indirect line of fire indicator drawn between the currently controlled mech and enemy targets
 - Change the color of the line of fire indicator for obstructed targets on the attacker and target sides of the obstruction
@@ -27,6 +29,8 @@ The `Color` variables below (`float[4]`) are RGBA colors, where the intensity of
 
 Setting | Type | Default | Description
 --- | --- | --- | ---
+`directLineOfFireArcActive` | `bool` | `false` | change the look of the direct firing line arc
+`directLineOfFireArcColor` | `float[4]` | `[0, 1, 0.5, 1]` (light blue) | the color of the direct firing line arc. The default in vanilla is `[1, 0, 0, 1]` (red).
 `indirectLineOfFireArcActive` | `bool` | `true` | change the look of the indirect firing line arc
 `indirectLineOfFireArcColor` | `float[4]` | `[1, 0.5, 0, 1]` (orange) | the color of the indirect firing line arc. The default in vanilla is `[1, 0, 0, 1]` (red).
 `indirectLineOfFireArcDashed` | `bool` | `false` | make the indirect firing line arc a dashed line

@@ -6,6 +6,27 @@ namespace BTMLColorLOSMod
     // into the C# variables used by the mod.
     public class Settings
     {
+        #region DirectLineOfFire
+
+        // The color to be patched into the game for the coloring direct Line of Fire (LOF)'s
+        // Defaults to magenta if the user gives us funky data so it should stand out
+        public Color DirectLineOfFireColor = Color.magenta;
+
+        public float[] directLineOfFireColor
+        {
+            set => DirectLineOfFireColor = new Color(value[0], value[1], value[2], value[3]);
+        }
+
+        // Controls whether we change the color of the near part of an obstructed LOF line.
+        public bool DirectLineOfFireActive = false;
+
+        public bool directLineOfFireActive
+        {
+            set => DirectLineOfFireActive = value;
+        }
+
+        #endregion
+
         #region IndirectLineOfFireArcOptions
 
         // The color to be patched into the game for coloring indirect lines of fire
