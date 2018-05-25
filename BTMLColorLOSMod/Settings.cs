@@ -14,7 +14,7 @@ namespace BTMLColorLOSMod
 
         public float[] directLineOfFireColor
         {
-            set => DirectLineOfFireColor = new Color(value[0], value[1], value[2], value[3]);
+            set => DirectLineOfFireColor = SettingsColorHelper.ColorFromValues(value[0], value[1], value[2], value[3]);
         }
 
         // Controls whether we change the color of the near part of an obstructed LOF line.
@@ -35,7 +35,7 @@ namespace BTMLColorLOSMod
 
         public float[] indirectLineOfFireArcColor
         {
-            set => IndirectLineOfFireArcColor = new Color(value[0], value[1], value[2], value[3]);
+            set => IndirectLineOfFireArcColor = SettingsColorHelper.ColorFromValues(value[0], value[1], value[2], value[3]);
         }
 
         // Controls whether we set the Indirect Line Of Fire Line to Dashed (true: dashed, false: solid)
@@ -73,7 +73,7 @@ namespace BTMLColorLOSMod
 
         public float[] obstructedLineOfFireAttackerSideColor
         {
-            set => ObstructedLineOfFireAttackerSideColor = new Color(value[0], value[1], value[2], value[3]);
+            set => ObstructedLineOfFireAttackerSideColor = SettingsColorHelper.ColorFromValues(value[0], value[1], value[2], value[3]);
         }
 
         // Controls whether we change the color of the near part of an obstructed LOF line.
@@ -95,7 +95,7 @@ namespace BTMLColorLOSMod
 
         public float[] obstructedLineOfFireTargetSideColor
         {
-            set => ObstructedLineOfFireTargetSideColor = new Color(value[0], value[1], value[2], value[3]);
+            set => ObstructedLineOfFireTargetSideColor = SettingsColorHelper.ColorFromValues(value[0], value[1], value[2], value[3]);
         }
 
         // Controls whether we change the color of the far part of an obstructed LOF line.
