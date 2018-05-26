@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 
 namespace BTMLColorLOSMod
@@ -22,9 +23,10 @@ namespace BTMLColorLOSMod
                 Color outColor = new Color(outR, outG, outB, outA);
                 return outColor;
             }
-            catch
+            catch(Exception ex)
             {
-                Logger.LogLine(string.Format("Error converting [raw] ({0}, {1}, {2}, {3}), [converted] ({4}, {5}, {6}, {7}) to a color", r, g, b, a, outR, outG, outB, outA));
+                Logger.LogLine(string.Format("Error converting [raw] ({0}, {1}, {2}, {3}), [converted] ({4}, {5}, {6}, {7}) to a color.", r, g, b, a, outR, outG, outB, outA));
+                Logger.LogError(ex);
                 return Color.magenta;   
             }
         }
