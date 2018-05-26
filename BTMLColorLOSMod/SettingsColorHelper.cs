@@ -24,7 +24,7 @@ namespace BTMLColorLOSMod
             }
             catch
             {
-                Logger.LogLine(string.Format("Error converting ({0}, {1}, {2}, {3}) to a color", r, g, b, a));
+                Logger.LogLine(string.Format("Error converting [raw] ({0}, {1}, {2}, {3}), [converted] ({4}, {5}, {6}, {7}) to a color", r, g, b, a, outR, outG, outB, outA));
                 return Color.magenta;   
             }
         }
