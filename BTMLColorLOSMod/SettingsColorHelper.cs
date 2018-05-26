@@ -26,7 +26,7 @@ namespace BTMLColorLOSMod
             }
             catch(Exception ex)
             {
-                Logger.LogLine(string.Format("Error converting [raw] ({0}, {1}, {2}, {3}), [converted] ({4}, {5}, {6}, {7}) to a color.", r, g, b, a, outR, outG, outB, outA));
+                Logger.LogLine($"Error converting [raw] ({r}, {g}, {b}, {a}) to [converted] ({outR}, {outG}, {outB}, {outA}) to a color.");
                 Logger.LogError(ex);
                 return Color.magenta;   
             }
@@ -38,7 +38,7 @@ namespace BTMLColorLOSMod
         public static float rgbaColorValueFromFloat(float value)
         {
             if (value < 0 || value > 255)
-                throw new ArgumentOutOfRangeException(string.Format("value is out of range: {0}", value));
+                throw new ArgumentOutOfRangeException($"value is out of range: {value}");
             if (value <= 1)
                 return value;
             return value / 255f;
