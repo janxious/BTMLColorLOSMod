@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 namespace BTMLColorLOSMod
 {
     public static class SettingsColorHelper
@@ -11,41 +12,10 @@ namespace BTMLColorLOSMod
         public static Color ColorFromValues(float r, float g, float b, float a)
         {
             float outR, outG, outB, outA;
-            if(r != 0 && r > 1)
-            {
-                outR = (float)(r / 255);
-            }
-            else
-            {
-                outR = r;
-            }
-
-            if(g != 0 && g > 1)
-            {
-                outG = (float)(g / 255);
-            }
-            else
-            {
-                outG = g;
-            }
-
-            if(b != 0 && b > 1)
-            {
-                outB = (float)(b / 255);
-            }
-            else
-            {
-                outB = b;
-            }
-
-            if(a != 0 && a > 1)
-            {
-                outA = (float)(a / 255);
-            }
-            else
-            {
-                outA = a;
-            }
+            outR = rgbaColorValueFromFloat(r);
+            outG = rgbaColorValueFromFloat(g);
+            outB = rgbaColorValueFromFloat(b);
+            outA = rgbaColorValueFromFloat(a);
 
             try
             {
@@ -54,8 +24,26 @@ namespace BTMLColorLOSMod
             }
             catch
             {
+                Logger.LogLine(string.Format("Error converting ({0}, {1}, {2}, {3}) to a color", r, g, b, a));
                 return Color.magenta;   
             }
+        }
+
+        // Takes in a float
+        // If the value is 0 <= X <= 1, return it
+        // if the value is X > 1, we'll divide it by 255 then return
+        public static float rgbaColorValueFromFloat(float value)
+        {
+            float outValue;
+            if(value !=0 && value > 1)
+            {
+                outValue = (float)(value / 255);
+            }
+            else
+            {
+                outValue = value;
+            }
+            return outValue;
         }
     }
 }
