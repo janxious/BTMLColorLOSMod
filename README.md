@@ -44,6 +44,8 @@ Setting | Type | Default | Description
 
 Here's some sample colors so you can see what I mean by RGB:
 
+<img width="273" alt="screen shot 2018-05-28 at 7 53 19 pm" src="https://user-images.githubusercontent.com/50124/40633724-78a0fa12-62bf-11e8-9227-5bcbeae4a0ae.png">
+
 ## More Screenshots
 
 Side angle
