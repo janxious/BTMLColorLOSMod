@@ -21,7 +21,7 @@ namespace BTMLColorLOSMod
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex);
+                Logger.Error(ex);
                 ModSettings = new Settings();
             }
         }

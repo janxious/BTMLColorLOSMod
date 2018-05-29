@@ -1,7 +1,6 @@
 using UnityEngine;
 using System;
 
-
 namespace BTMLColorLOSMod
 {
     public static class SettingsColorHelper
@@ -13,7 +12,6 @@ namespace BTMLColorLOSMod
         public static Color ColorFromValues(float r, float g, float b, float a)
         {
             float outR=-1, outG=-1, outB=-1, outA=-1;
-       
 
             try
             {
@@ -26,8 +24,8 @@ namespace BTMLColorLOSMod
             }
             catch(Exception ex)
             {
-                Logger.LogLine($"Error converting [raw] ({r}, {g}, {b}, {a}) to [converted] ({outR}, {outG}, {outB}, {outA}) to a color.");
-                Logger.LogError(ex);
+                Logger.Debug($"Error converting [raw] ({r}, {g}, {b}, {a}) to [converted] ({outR}, {outG}, {outB}, {outA}) to a color.");
+                Logger.Error(ex);
                 return Color.magenta;   
             }
         }

@@ -2,7 +2,7 @@
   "Name": "BTMLColorLOSMod",
   "Enabled": true,
 
-  "Version": "0.4.0",
+  "Version": "0.5.0",
 
   "Author": "janxious",
   "Website": "https://github.com/janxious/BTMLColorLOSMod",
@@ -14,18 +14,18 @@
 
   "Settings": {
     "directLineOfFireActive": false,
-    "directLineOfFireColor": [0, 1, 0.5, 1],
+    "directLineOfFireColor": [0, 255, 128, 255],
 
     "indirectLineOfFireArcActive": true,
-    "indirectLineOfFireArcColor": [1, 0.5, 0, 1],
+    "indirectLineOfFireArcColor": [255, 128, 0, 255],
     "indirectLineOfFireArcDashed": false,
     "indirectLineOfFireArcDashedThicknessMultiplier":  1.75,
 
     "obstructedLineOfFireAttackerSideActive": false,
-    "obstructedLineOfFireAttackerSideColor": [0, 0.25, 1, 1],
+    "obstructedLineOfFireAttackerSideColor": [0, 64, 255, 255],
 
     "obstructedLineOfFireTargetSideActive": true,
-    "obstructedLineOfFireTargetSideColor": [0.6, 0, 1, 0.9],
+    "obstructedLineOfFireTargetSideColor": [153, 0, 255, 230],
     "obstructedLineOfFireTargetSiteThicknessMultiplier": 1.25
   }
 }

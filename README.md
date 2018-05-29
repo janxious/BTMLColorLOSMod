@@ -24,24 +24,25 @@ Downloads can be found on [Github](https://github.com/janxious/BTMLColorLOSMod/r
 
 ## Settings
 
-The `*Color` variables below (`float[4]`) are RGBA colors. You can enter your colors as a number 0-255, or a float from 0 to 1. For example, pure red can be entered as `[255, 0, 0, 1]` (hex/web format) or `[1, 0, 0, 1]` (unity format). If you make the alpha channel `0`, you will probably not have a line at all. You can use a color picker like [the W3's](https://www.w3schools.com/colors/colors_picker.asp) and then divide the individual values by 255 to get the decimal you need. For example hex color `#66ff33` / rgb color `rgb(102, 255, 51)` can be entered directly as `[102, 255, 51, 1]` or converted from `[102/255, 255/255, 51/255, 1]`, which works out to `[0.4, 1, 0.2, 1]`.
+The `*Color` variables below (`float[4]`) are RGBA colors. You can enter your colors as a number 0-255, or a float from 0 to 1. For example, pure red can be entered as `[255, 0, 0, 255]` (hex/web format) or `[1, 0, 0, 1]` (unity format). If you make the alpha channel `0`, you will probably not have a line at all. You can use a color picker like [the W3's](https://www.w3schools.com/colors/colors_picker.asp) or a color chart like [websitetip](http://websitetips.com/colorcharts/daxassist/)'s to find colors you like.
+
+For unity-style numbers, you can use the color picker and then divide the individual values by 255 to get the decimal you need. For example hex color `#66ff33` / rgb color `rgb(102, 255, 51)` can be entered directly as `[102, 255, 51, 1]` or converted from `[102/255, 255/255, 51/255, 1]`, which works out to `[0.4, 1, 0.2, 1]`.
 
 Setting | Type | Default | Description
 --- | --- | --- | ---
 `directLineOfFireArcActive` | `bool` | `false` | change the look of the direct firing line arc
-`directLineOfFireArcColor` | `float[4]` | `[0, 1, 0.5, 1]` (light blue) | the color of the direct firing line arc. The default in vanilla is `[1, 0, 0, 1]` (red).
+`directLineOfFireArcColor` | `float[4]` | `[0, 255, 128, 255]` (light blue) | the color of the direct firing line arc. The default in vanilla is `[255, 0, 0, 255]` (red).
 `indirectLineOfFireArcActive` | `bool` | `true` | change the look of the indirect firing line arc
-`indirectLineOfFireArcColor` | `float[4]` | `[1, 0.5, 0, 1]` (orange) | the color of the indirect firing line arc. The default in vanilla is `[1, 0, 0, 1]` (red).
+`indirectLineOfFireArcColor` | `float[4]` | `[255, 128, 0, 255]` (golden orange) | the color of the indirect firing line arc. The default in vanilla is `[255, 0, 0, 255]` (red).
 `indirectLineOfFireArcDashed` | `bool` | `false` | make the indirect firing line arc a dashed line
 `indirectLineOfFireArcDashedThicknessMultiplier` | `float` | `1.75` | change how thick the indirect firing line looks when dashed
 `obstructedLineOfFireAttackerSideActive` | `bool` | false | change the look of the line of fire indicator when obstructed on the side nearest the attacker
-`obstructedLineOfFireAttackerSideColor` | `float[4]` | `[0, 0.25, 1, 1]` (blue) | line of fire color nearest the attacker when fire is obstructed
+`obstructedLineOfFireAttackerSideColor` | `float[4]` | `[0, 64, 255, 255]` (blue) | line of fire color nearest the attacker when fire is obstructed
 `obstructedLineOfFireTargetSideActive` | `bool` | true | change the look of the line of fire indicator when obstructed on the side nearest the target
-`obstructedLineOfFireTargetSideColor` | `float[4]` | `[0.6, 0, 1, 0.9]` (purple) | line of fire color nearest the target when fire is obstructed
+`obstructedLineOfFireTargetSideColor` | `float[4]` | `[153, 0, 255, 230]` (purple) | line of fire color nearest the target when fire is obstructed
 `obstructedLineOfFireTargetSiteThicknessMultiplier` | `float` | `1.25` | change how thick the obstructed firing line looks on the target side
 
-
-
+Here's some sample colors so you can see what I mean by RGB:
 
 ## More Screenshots
 

@@ -133,7 +133,7 @@ namespace BTMLColorLOSMod
                                 // ???
                                 if (target == HUD.SelectionHandler.ActiveState.FacingEnemy)
                                 {
-                                    Logger.LogLine("LOF facing");
+                                    Logger.Debug("LOF facing");
 
                                     if (ModSettings.DirectLineOfFireActive)
                                     {

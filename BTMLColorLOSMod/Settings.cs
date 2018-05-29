@@ -115,5 +115,11 @@ namespace BTMLColorLOSMod
         }
 
         #endregion
+
+        #region debug settings
+
+        public bool debug = false;
+
+        #endregion
     }
 }
