@@ -14,18 +14,48 @@
 
   "Settings": {
     "directLineOfFireActive": false,
-    "directLineOfFireColor": [0, 255, 128, 255],
+    "directLineOfFireColor": [ 0, 255, 128, 255 ],
 
     "indirectLineOfFireArcActive": true,
-    "indirectLineOfFireArcColor": [255, 128, 0, 255],
+    "indirectLineOfFireArcColor": [ 255, 128, 0, 255 ],
     "indirectLineOfFireArcDashed": false,
-    "indirectLineOfFireArcDashedThicknessMultiplier":  1.75,
+    "indirectLineOfFireArcDashedThicknessMultiplier": 1.75,
 
     "obstructedLineOfFireAttackerSideActive": false,
-    "obstructedLineOfFireAttackerSideColor": [0, 64, 255, 255],
+    "obstructedLineOfFireAttackerSideColor": [ 0, 64, 255, 255 ],
 
     "obstructedLineOfFireTargetSideActive": true,
-    "obstructedLineOfFireTargetSideColor": [153, 0, 255, 230],
-    "obstructedLineOfFireTargetSiteThicknessMultiplier": 1.25
+    "obstructedLineOfFireTargetSideColor": [ 153, 0, 255, 230 ],
+    "obstructedLineOfFireTargetSiteThicknessMultiplier": 1.25,
+
+      "DirectLineOfFireColorsExtra": [
+        [ 1, 0, 0, 255 ],
+        [ 0, 1, 0, 255 ],
+        [ 0, 0, 1, 255 ],
+        [ 0, 1, 0.5, 255 ]
+      ],
+
+      "IndirectLineOfFireColorsExtra": [
+        [ 0, 1, 0, 255 ],
+        [ 1, 0, 0, 255 ],
+        [ 0, 0, 1, 255 ],
+        [ 0, 1, 0.5, 255 ]
+      ],
+
+      "ObstructedLineOfFireAttackerSideColorsExtra": [
+        [ 0, 0, 1, 255 ],
+        [ 0, 1, 0, 255 ],
+        [ 1, 0, 0, 255 ],
+        [ 0, 1, 0.5, 255 ]
+      ],
+
+      "ObstructedLineOfFireTargetSideColorsExtra": [
+        [ 0, 1, 0.5, 255 ],
+        [ 1, 0, 0, 255 ],
+        [ 0, 0, 1, 255 ],
+        [ 0, 1, 0, 255 ]
+      ]
+
+
   }
 }

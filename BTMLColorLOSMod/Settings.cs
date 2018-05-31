@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+
 
 namespace BTMLColorLOSMod
 {
@@ -35,7 +38,10 @@ namespace BTMLColorLOSMod
 
         public float[] indirectLineOfFireArcColor
         {
-            set => IndirectLineOfFireArcColor = SettingsColorHelper.ColorFromValues(value[0], value[1], value[2], value[3]);
+            set
+            {
+                IndirectLineOfFireArcColor = SettingsColorHelper.ColorFromValues(value[0], value[1], value[2], value[3]);
+            }
         }
 
         // Controls whether we set the Indirect Line Of Fire Line to Dashed (true: dashed, false: solid)
@@ -120,6 +126,86 @@ namespace BTMLColorLOSMod
 
         public bool debug = false;
 
+        #endregion
+
+        #region Alternate Colors 
+        public List<Color> IDLOFCA = new List<Color>();
+        public List<Color> DLOFCA = new List<Color>();
+        public List<Color> OLOFASCA = new List<Color>();
+        public List<Color> OLOFTSCA = new List<Color>();
+
+        public int AlternateColorIndex = 1;
+
+
+        public float[][] ObstructedLineOfFireTargetSideColorsExtra
+        {
+            set
+            {
+                OLOFTSCA.Clear();
+                Logger.Debug("OTS: Adding the original color");
+                OLOFTSCA.Add(DirectLineOfFireColor);
+                foreach (float[] colorvals in value)
+                {
+                    Logger.Debug($"OTS: Adding new color: {colorvals[0]} {colorvals[1]} {colorvals[2]} {colorvals[3]}");
+                    OLOFTSCA.Add(SettingsColorHelper.ColorFromValues(colorvals[0], colorvals[1], colorvals[2], colorvals[3]));
+                }
+                Logger.Debug($"OLOFTSCA: {OLOFTSCA.Count}");
+            }
+        }
+
+        public float[][] ObstructedLineOfFireAttackerSideColorsExtra
+        {
+            set
+            {
+                OLOFASCA.Clear();
+                Logger.Debug("OAS: Adding the original color");
+                OLOFASCA.Add(DirectLineOfFireColor);
+                foreach (float[] colorvals in value)
+                {
+                    Logger.Debug($"OAS: Adding new color: {colorvals[0]} {colorvals[1]} {colorvals[2]} {colorvals[3]}");
+                    OLOFASCA.Add(SettingsColorHelper.ColorFromValues(colorvals[0], colorvals[1], colorvals[2], colorvals[3]));
+                }
+                Logger.Debug($"OLOFASCA: {OLOFASCA.Count}");
+            }
+        }
+
+
+        public float[][] DirectLineOfFireColorsExtra
+        {
+            set
+            {
+                DLOFCA.Clear();
+                Logger.Debug("D: Adding the original color");
+                DLOFCA.Add(DirectLineOfFireColor);
+                foreach (float[] colorvals in value)
+                {
+                    Logger.Debug($"D: Adding new color: {colorvals[0]} {colorvals[1]} {colorvals[2]} {colorvals[3]}");
+                    DLOFCA.Add(SettingsColorHelper.ColorFromValues(colorvals[0], colorvals[1], colorvals[2], colorvals[3]));
+                }
+                Logger.Debug($"DLOFCA: {DLOFCA.Count}");
+            }
+        }
+
+        public float[][] IndirectLineOfFireColorsExtra
+        {
+            set
+            {
+                IDLOFCA.Clear();
+                Logger.Debug("Adding the original color");
+                IDLOFCA.Add(IndirectLineOfFireArcColor);
+                foreach (float[] colorvals in value)
+                {
+                    Logger.Debug($"Adding new color: {colorvals[0]} {colorvals[1]} {colorvals[2]} {colorvals[3]}");
+                    IDLOFCA.Add(SettingsColorHelper.ColorFromValues(colorvals[0], colorvals[1], colorvals[2], colorvals[3]));
+                }
+                Logger.Debug($"IDLOFCA: {IDLOFCA.Count}");
+                Logger.Debug("IDLOFCA:");
+                foreach (Color c in IDLOFCA)
+                {
+                    Logger.Debug($"         C: {c.r} {c.g} {c.b} {c.a}");
+                }
+            }
+        }
         #endregion
     }
 }
