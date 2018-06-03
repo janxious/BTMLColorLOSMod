@@ -29,33 +29,15 @@ namespace BTMLColorLOSMod
         {
             public static bool Prefix(UIManager __instance)
             {
+                if (!ModSettings.NextColorKeyBinding.Active) return true;
+
                 if (SelectNextLineOfFireColor.WasReleased)
                 {
-                    Logger.Debug($"Toggling inverse: {ModSettings.AlternateColorIndex}");
-                    ModSettings.AlternateColorIndex++;
-                    if (ModSettings.IDLOFCA.Count > 0)
-                        ModSettings.IndirectLineOfFireArcColor =
-                            ModSettings.IDLOFCA[
-                                ModSettings.AlternateColorIndex %
-                                ModSettings.IDLOFCA.Count];
-
-                    if (ModSettings.DLOFCA.Count > 0)
-                        ModSettings.DirectLineOfFireColor = ModSettings.DLOFCA[
-                            ModSettings.AlternateColorIndex % ModSettings.DLOFCA.Count];
-
-                    if (ModSettings.OLOFTSCA.Count > 0)
-                        ModSettings.ObstructedLineOfFireTargetSideColor =
-                            ModSettings.OLOFTSCA[
-                                ModSettings.AlternateColorIndex %
-                                ModSettings.OLOFTSCA.Count];
-
-                    if (ModSettings.OLOFASCA.Count > 0)
-                        ModSettings.ObstructedLineOfFireAttackerSideColor =
-                            ModSettings.OLOFASCA[
-                                ModSettings.AlternateColorIndex %
-                                ModSettings.OLOFASCA.Count];
-
-                    Logger.Debug($"It's now inverted");
+                    ModSettings.Indirect.NextColor();
+                    ModSettings.Direct.NextColor();
+                    ModSettings.ObstructedAttackerSide.NextColor();
+                    ModSettings.ObstructedTargetSide.NextColor();
+                    Logger.Debug($"next color selected");
                 }
 
                 return true;

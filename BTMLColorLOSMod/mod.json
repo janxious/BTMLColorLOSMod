@@ -23,7 +23,10 @@
     "direct": {
       "active": true,
       "colors": [
-        [0, 255, 128, 255]
+        [255,   0,   0, 255],
+        [  0, 255,   0, 255],
+        [  0,   0, 255, 255],
+        [  0,   0,   0, 255]
       ],
       "dashed": true,
       "thickness": 1
@@ -31,7 +34,10 @@
     "indirect": {
       "active": true,
       "colors": [
-        [255, 128, 0, 255]
+        [255, 128,   0, 255],
+        [  0, 255,   0, 255],
+        [255,   0,   0, 255],
+        [  0,   0, 255, 255]
       ],
       "dashed": true,
       "thickness": 1.75
@@ -39,7 +45,10 @@
     "obstructedAttackerSide": {
       "active": true,
       "colors": [
-        [0, 64, 255, 255]
+        [  0,  64, 255, 255],
+        [  0,   0, 255, 255],
+        [  0, 255,   0, 255],
+        [255,   0,   0, 255]
       ],
       "dashed": true,
       "thickness": 1
@@ -47,55 +56,13 @@
     "obstructedTargetSide": {
       "active": true,
       "colors": [
-        [153, 0, 255, 230]
+        [153,   0, 255, 230],
+        [255,   0,   0, 255],
+        [  0,   0, 255, 255],
+        [  0, 255,   0, 255]
       ],
       "dashed": true,
       "thickness": 1.25
-    },
-
-    "directLineOfFireActive": false,
-    "directLineOfFireColor": [ 0, 255, 128, 255 ],
-
-    "indirectLineOfFireArcActive": true,
-    "indirectLineOfFireArcColor": [ 255, 128, 0, 255 ],
-    "indirectLineOfFireArcDashed": false,
-    "indirectLineOfFireArcDashedThicknessMultiplier": 1.75,
-
-    "obstructedLineOfFireAttackerSideActive": false,
-    "obstructedLineOfFireAttackerSideColor": [ 0, 64, 255, 255 ],
-
-    "obstructedLineOfFireTargetSideActive": true,
-    "obstructedLineOfFireTargetSideColor": [ 153, 0, 255, 230 ],
-    "obstructedLineOfFireTargetSiteThicknessMultiplier": 1.25,
-
-      "DirectLineOfFireColorsExtra": [
-        [ 1, 0, 0, 255 ],
-        [ 0, 1, 0, 255 ],
-        [ 0, 0, 1, 255 ],
-        [ 0, 1, 0.5, 255 ]
-      ],
-
-      "IndirectLineOfFireColorsExtra": [
-        [ 0, 1, 0, 255 ],
-        [ 1, 0, 0, 255 ],
-        [ 0, 0, 1, 255 ],
-        [ 0, 1, 0.5, 255 ]
-      ],
-
-      "ObstructedLineOfFireAttackerSideColorsExtra": [
-        [ 0, 0, 1, 255 ],
-        [ 0, 1, 0, 255 ],
-        [ 1, 0, 0, 255 ],
-        [ 0, 1, 0.5, 255 ]
-      ],
-
-      "ObstructedLineOfFireTargetSideColorsExtra": [
-        [ 0, 1, 0.5, 255 ],
-        [ 1, 0, 0, 255 ],
-        [ 0, 0, 1, 255 ],
-        [ 0, 1, 0, 255 ]
-      ]
-
-
+    }
   }
 }

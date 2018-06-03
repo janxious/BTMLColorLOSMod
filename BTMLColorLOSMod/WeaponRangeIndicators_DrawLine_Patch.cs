@@ -135,13 +135,12 @@ namespace BTMLColorLOSMod
                                     {
                                         Logger.Debug("LOF facing");
 
-                                        if (ModSettings.DirectLineOfFireActive)
+                                        if (ModSettings.Direct.Active)
                                         {
-
                                             float shotQuality = (float)ReflectionHelper.InvokePrivateMethode(__instance,
                                                 "GetShotQuality", new object[] { selectedActor, position, rotation, target });
                                             line.material.color = Color.white;
-                                            line.endColor = line.startColor = Color.Lerp(Color.clear, ModSettings.DirectLineOfFireColor, shotQuality);
+                                            line.endColor = line.startColor = Color.Lerp(Color.clear, ModSettings.Direct.Color, shotQuality);
                                         }
                                         line.startWidth =
                                             __instance.LOSWidthBegin * __instance.LOSWidthFacingTargetMultiplier;
@@ -150,13 +149,13 @@ namespace BTMLColorLOSMod
                                     else
                                     {
                                         // enemy in firing arc and have shot
-                                        if (ModSettings.DirectLineOfFireActive)
+                                        if (ModSettings.Direct.Active)
                                         {
 
                                             float shotQuality = (float)ReflectionHelper.InvokePrivateMethode(__instance,
                                                 "GetShotQuality", new object[] { selectedActor, position, rotation, target });
                                             line.material.color = Color.white;
-                                            line.endColor = line.startColor = Color.Lerp(Color.clear, ModSettings.DirectLineOfFireColor, shotQuality);
+                                            line.endColor = line.startColor = Color.Lerp(Color.clear, ModSettings.Direct.Color, shotQuality);
                                         }
 
                                         line.startWidth = __instance.LOSWidthBegin;
@@ -184,28 +183,30 @@ namespace BTMLColorLOSMod
                                     Vector3 collisionPoint = previewInfo.collisionPoint;
                                     collisionPoint = Vector3.Project(collisionPoint - vector, vector2 - vector) + vector;
                                     line.SetPosition(1, collisionPoint);
-                                    if (ModSettings.ObstructedLineOfFireAttackerSideActive)
+                                    if (ModSettings.ObstructedAttackerSide.Active)
                                     {
                                         line.material.color = Color.white;
-                                        line.startColor = line.endColor = ModSettings.ObstructedLineOfFireAttackerSideColor;
+                                        line.startColor = line.endColor = ModSettings.ObstructedAttackerSide.Color;
+                                        line.startWidth = line.endWidth = ModSettings.ObstructedAttackerSide.Thickness;
                                     }
 
                                     LineRenderer line2 =
                                         (LineRenderer)ReflectionHelper.InvokePrivateMethode(__instance, "getLine",
                                             new object[] { });
                                     line2.positionCount = 2;
-                                    line2.startWidth = __instance.LOSWidthBlocked *
-                                                       ModSettings.ObstructedLineOfFireTargetSiteThicknessMultiplier;
-                                    line2.endWidth = __instance.LOSWidthBlocked *
-                                                     ModSettings.ObstructedLineOfFireTargetSiteThicknessMultiplier;
-                                    ;
+
                                     line2.material = __instance.MaterialInRange;
 
-                                    line2.startColor = line2.endColor = __instance.LOSBlocked;
-                                    if (ModSettings.ObstructedLineOfFireTargetSideActive)
+                                    if (ModSettings.ObstructedTargetSide.Active)
                                     {
-                                        line2.startColor = line2.endColor = ModSettings.ObstructedLineOfFireTargetSideColor;
                                         line2.material.color = Color.white;
+                                        line2.startColor = line2.endColor = ModSettings.ObstructedTargetSide.Color;
+                                        line2.startWidth = line2.endWidth = ModSettings.ObstructedTargetSide.Thickness;
+                                    }
+                                    else
+                                    {
+                                        line2.startColor = line2.endColor = __instance.LOSBlocked;
+                                        line2.startWidth = line2.endWidth = __instance.LOSWidthBlocked;
                                     }
 
                                     line2.SetPosition(0, collisionPoint);
@@ -224,24 +225,19 @@ namespace BTMLColorLOSMod
                             // arc shot
                             else
                             {
-                                if (ModSettings.IndirectLineOfFireArcActive)
+                                if (ModSettings.Indirect.Active)
                                 {
                                     float shotQuality = (float)ReflectionHelper.InvokePrivateMethode(__instance,
                                         "GetShotQuality", new object[] { selectedActor, position, rotation, target });
                                     Color color6 = Color.Lerp(
                                         Color.clear,
-                                        ModSettings.IndirectLineOfFireArcColor,
+                                        ModSettings.Indirect.Color,
                                         shotQuality);
-                                    if (ModSettings.IndirectLineOfFireArcDashed)
+                                    if (ModSettings.Indirect.Dashed)
                                     {
                                         line.material = __instance.MaterialOutOfRange;
                                         line.material.color = color6;
-                                        line.endWidth = __instance.LOSWidthEnd *
-                                                        ModSettings
-                                                            .IndirectLineOfFireArcDashedThicknessMultiplier; // dashes are harder to see,
-                                        line.startWidth = __instance.LOSWidthBegin *
-                                                          ModSettings
-                                                              .IndirectLineOfFireArcDashedThicknessMultiplier; // so make 'em bigger
+                                        line.startWidth = line.endWidth = ModSettings.Indirect.Thickness;
                                     }
                                     else
                                     {

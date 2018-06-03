@@ -20,12 +20,22 @@ namespace BTMLColorLOSMod
                 }
             }
         }
+
         public List<Color> Colors = new List<Color>();
+
+        private int currentColorIndex = 0;
 
         public bool dashed = false;
         public bool Dashed => dashed;
 
         public float thickness = 1.0f;
         public float Thickness => thickness;
+
+        public void NextColor()
+        {
+            currentColorIndex = (currentColorIndex + 1) % Colors.Count;
+        }
+
+        public Color Color => Colors[currentColorIndex];
     }
 }
