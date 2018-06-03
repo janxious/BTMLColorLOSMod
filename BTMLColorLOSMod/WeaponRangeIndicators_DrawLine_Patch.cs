@@ -4,90 +4,9 @@ using BattleTech.UI;
 using Harmony;
 using UnityEngine;
 using static BTMLColorLOSMod.BTMLColorLOSMod;
-using InControl;
-using System;
 
 namespace BTMLColorLOSMod
 {
-    public class Patches
-    {
-
-        public class Adapter<T>
-        {
-            public readonly T instance;
-            public readonly Traverse traverse;
-
-            protected Adapter(T instance)
-            {
-                this.instance = instance;
-                traverse = Traverse.Create(instance);
-            }
-        }
-
-        public static PlayerAction ToggleInverseColor;
-
-
-        [HarmonyPatch(typeof(BattleTech.UI.UIManager), "Update")]
-        public static class UIManager_Patch
-        {
-            public static bool Prefix(UIManager __instance)
-            {
-                if (ToggleInverseColor.WasReleased)
-                {
-                    Logger.Debug($"Toggling inverse: {BTMLColorLOSMod.ModSettings.AlternateColorIndex}");
-                    BTMLColorLOSMod.ModSettings.AlternateColorIndex++;
-                    if(BTMLColorLOSMod.ModSettings.IDLOFCA.Count > 0)
-                        BTMLColorLOSMod.ModSettings.IndirectLineOfFireArcColor = BTMLColorLOSMod.ModSettings.IDLOFCA[BTMLColorLOSMod.ModSettings.AlternateColorIndex % BTMLColorLOSMod.ModSettings.IDLOFCA.Count];
-
-                    if(BTMLColorLOSMod.ModSettings.DLOFCA.Count > 0)
-                        BTMLColorLOSMod.ModSettings.DirectLineOfFireColor = BTMLColorLOSMod.ModSettings.DLOFCA[BTMLColorLOSMod.ModSettings.AlternateColorIndex % BTMLColorLOSMod.ModSettings.DLOFCA.Count];
-
-                    if (BTMLColorLOSMod.ModSettings.OLOFTSCA.Count > 0)
-                        BTMLColorLOSMod.ModSettings.ObstructedLineOfFireTargetSideColor = BTMLColorLOSMod.ModSettings.OLOFTSCA[BTMLColorLOSMod.ModSettings.AlternateColorIndex % BTMLColorLOSMod.ModSettings.OLOFTSCA.Count];
-
-                    if (BTMLColorLOSMod.ModSettings.OLOFASCA.Count > 0)
-                        BTMLColorLOSMod.ModSettings.ObstructedLineOfFireAttackerSideColor = BTMLColorLOSMod.ModSettings.OLOFASCA[BTMLColorLOSMod.ModSettings.AlternateColorIndex % BTMLColorLOSMod.ModSettings.OLOFASCA.Count];
-
-                    Logger.Debug($"It's now inverted");
-                }
-                return true;
-            }
-        }
-
-
-        [HarmonyPatch(typeof(DynamicActions), "CreateWithDefaultBindings")]
-        public static class DynamicActionsCreateWithDefaultBindingsPatch
-        {
-
-
-            public static void Postfix(DynamicActions __result)
-            {
-                try
-                {
-                    var adapter = new DynamicActionsAdapter(__result);
-                    ToggleInverseColor = adapter.CreatePlayerAction("Toggle Inverse Color");
-                    ToggleInverseColor.AddDefaultBinding(Key.I);
-                    Logger.Debug("Keybind added");
-                }
-                catch (Exception e)
-                {
-                    Logger.Error(e);
-                }
-            }
-        }
-
-        internal class DynamicActionsAdapter : Adapter<DynamicActions>
-        {
-            internal DynamicActionsAdapter(DynamicActions instance) : base(instance)
-            {
-            }
-
-            internal PlayerAction CreatePlayerAction(string name)
-            {
-                return traverse.Method("CreatePlayerAction", name).GetValue<PlayerAction>(name); ;
-            }
-        }
-
         [HarmonyPatch(typeof(BattleTech.UI.WeaponRangeIndicators), "DrawLine")]
         public static class WeaponRangeIndicators_DrawLine_Patch
         {
@@ -363,5 +282,4 @@ namespace BTMLColorLOSMod
                 return false;
             }
         }
-    }
 }

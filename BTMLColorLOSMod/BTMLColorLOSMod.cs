@@ -9,11 +9,9 @@ namespace BTMLColorLOSMod
     {
         internal static Settings ModSettings = new Settings();
         internal static string ModDirectory;
+
         public static void Init(string directory, string settingsJSON)
         {
-            var harmony = HarmonyInstance.Create("com.joelmeador.BTMLColorLOSMod");
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
-
             ModDirectory = directory;
             try
             {
@@ -24,6 +22,9 @@ namespace BTMLColorLOSMod
                 Logger.Error(ex);
                 ModSettings = new Settings();
             }
+
+            var harmony = HarmonyInstance.Create("com.joelmeador.BTMLColorLOSMod");
+            harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
     }
 }

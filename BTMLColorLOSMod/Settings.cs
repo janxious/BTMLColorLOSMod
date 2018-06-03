@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
+using InControl;
 using UnityEngine;
 
 
@@ -9,6 +12,24 @@ namespace BTMLColorLOSMod
     // into the C# variables used by the mod.
     public class Settings
     {
+        public LineSetting direct;
+        public LineSetting Direct => direct;
+
+        public LineSetting indirect;
+        public LineSetting Indirect => indirect;
+
+        public LineSetting obstructedAttackerSide;
+        public LineSetting ObstructedAttackerSide => obstructedAttackerSide;
+
+        public LineSetting obstructedTargetSide;
+        public LineSetting ObstructedTargetSide => obstructedTargetSide;
+
+        public KeyBindingSetting nextColorKeyBinding;
+        public KeyBindingSetting NextColorKeyBinding => nextColorKeyBinding;
+
+        public bool debug = false;
+
+        #region deprecated settings
         #region DirectLineOfFire
 
         // The color to be patched into the game for the coloring direct Line of Fire (LOF)'s
@@ -122,11 +143,8 @@ namespace BTMLColorLOSMod
 
         #endregion
 
-        #region debug settings
-
-        public bool debug = false;
-
         #endregion
+
 
         #region Alternate Colors 
         public List<Color> IDLOFCA = new List<Color>();
