@@ -156,10 +156,25 @@ namespace BTMLColorLOSMod
                                                 "GetShotQuality", new object[] { selectedActor, position, rotation, target });
                                             line.material.color = Color.white;
                                             line.endColor = line.startColor = Color.Lerp(Color.clear, ModSettings.Direct.Color, shotQuality);
+                                            // PoC follows for a very high contrast line to help color blind players
+//                                            line.endColor = line.startColor = Color.black;
+//                                            LineRenderer line8080 =
+//                                                (LineRenderer)ReflectionHelper.InvokePrivateMethode(__instance, "getLine",
+//                                                    new object[] { });
+//                                            line8080.positionCount = 2;
+//                                            line8080.SetPosition(0, vector);
+//                                            line8080.material = __instance.MaterialOutOfRange;
+//                                            line8080.endColor = line8080.startColor = Color.white;
+//                                            line8080.material.color = Color.white;
+//                                            line8080.startWidth = line8080.endWidth = ModSettings.Direct.Thickness * 1.5f;
+//                                            line8080.SetPosition(1, vector2);
+                                            if (ModSettings.Direct.Dashed)
+                                            {
+                                                line.material = __instance.MaterialOutOfRange;
+                                                line.material.color = line.endColor;
+                                            }
                                         }
-
-                                        line.startWidth = __instance.LOSWidthBegin;
-                                        line.endWidth = __instance.LOSWidthEnd;
+                                        line.startWidth = line.endWidth = ModSettings.Direct.Thickness;
                                     }
 
                                     line.SetPosition(1, vector2);
@@ -188,6 +203,11 @@ namespace BTMLColorLOSMod
                                         line.material.color = Color.white;
                                         line.startColor = line.endColor = ModSettings.ObstructedAttackerSide.Color;
                                         line.startWidth = line.endWidth = ModSettings.ObstructedAttackerSide.Thickness;
+                                        if (ModSettings.ObstructedAttackerSide.Dashed)
+                                        {
+                                            line.material = __instance.MaterialOutOfRange;
+                                            line.material.color = line.endColor;
+                                        }
                                     }
 
                                     LineRenderer line2 =
@@ -202,6 +222,11 @@ namespace BTMLColorLOSMod
                                         line2.material.color = Color.white;
                                         line2.startColor = line2.endColor = ModSettings.ObstructedTargetSide.Color;
                                         line2.startWidth = line2.endWidth = ModSettings.ObstructedTargetSide.Thickness;
+                                        if (ModSettings.ObstructedTargetSide.Dashed)
+                                        {
+                                            line2.material = __instance.MaterialOutOfRange;
+                                            line2.material.color = line2.endColor;
+                                        }
                                     }
                                     else
                                     {

@@ -13,13 +13,11 @@
   "ConflictsWith": [],
 
   "Settings": {
-    "debug": true,
-
     "nextColorKeyBinding": {
       "active": true,
       "keys": ["shift", "i"]
     },
-    
+
     "direct": {
       "active": true,
       "colors": [
@@ -28,7 +26,7 @@
         [  0,   0, 255, 255],
         [  0,   0,   0, 255]
       ],
-      "dashed": true,
+      "dashed": false,
       "thickness": 1
     },
     "indirect": {
@@ -43,14 +41,14 @@
       "thickness": 1.75
     },
     "obstructedAttackerSide": {
-      "active": true,
+      "active": false,
       "colors": [
         [  0,  64, 255, 255],
         [  0,   0, 255, 255],
         [  0, 255,   0, 255],
         [255,   0,   0, 255]
       ],
-      "dashed": true,
+      "dashed": false,
       "thickness": 1
     },
     "obstructedTargetSide": {
@@ -61,7 +59,7 @@
         [  0,   0, 255, 255],
         [  0, 255,   0, 255]
       ],
-      "dashed": true,
+      "dashed": false,
       "thickness": 1.25
     }
   }

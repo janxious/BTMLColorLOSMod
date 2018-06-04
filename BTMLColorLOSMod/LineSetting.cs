@@ -15,8 +15,7 @@ namespace BTMLColorLOSMod
                 Colors.Clear();
                 foreach (var colorValues in value)
                 {
-                    Colors.Add(SettingsColorHelper.ColorFromValues(
-                        colorValues[0], colorValues[1], colorValues[2], colorValues[3]));
+                    Colors.Add(SettingsColorHelper.ColorFromValues(colorValues[0], colorValues[1], colorValues[2], colorValues[3]));
                 }
             }
         }
