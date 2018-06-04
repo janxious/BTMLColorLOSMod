@@ -10,8 +10,9 @@ The defaults for this mod setup the indirect line and the nearer target obstruct
 ## Features
 - Change the color of direct line of fire indicator drawn between the currently controlled mech and enemy targets
 - Change the color of indirect line of fire indicator drawn between the currently controlled mech and enemy targets
-- Add dashes to the indirect line of fire indicator drawn between the currently controlled mech and enemy targets
 - Change the color of the line of fire indicator for obstructed targets on the attacker and target sides of the obstruction
+- Add dashes to the line of fire indicator drawn between the currently controlled mech and enemy targets
+- Shift to different color settings with an easy button press
 
 ## Download
 Downloads can be found on [Github](https://github.com/janxious/BTMLColorLOSMod/releases) and on [Nexus](https://www.nexusmods.com/battletech/mods/135).
@@ -24,25 +25,50 @@ Downloads can be found on [Github](https://github.com/janxious/BTMLColorLOSMod/r
 
 ## Settings
 
-The `*Color` variables below (`float[4]`) are RGBA colors. You can enter your colors as a number 0-255, or a float from 0 to 1. For example, pure red can be entered as `[255, 0, 0, 255]` (hex/web format) or `[1, 0, 0, 1]` (unity format). If you make the alpha channel `0`, you will probably not have a line at all. You can use a color picker like [the W3's](https://www.w3schools.com/colors/colors_picker.asp) or a color chart like [websitetip](http://websitetips.com/colorcharts/daxassist/)'s to find colors you like.
+### Line Settings
+For each kind of line supported there is a key with its own settings in `mod.json`. Those keys are `direct`, `indirect`, `obstructedAttackerSide`, and `obstructedTargetSide`. They each have data structured like:
+
+```json
+{
+  "active": true,
+  "colors": [
+    [255,   0,   0, 255],
+    [  0, 255,   0, 255],
+    [  0,   0, 255, 255],
+    [  0,   0,   0, 255]
+  ],
+  "dashed": false,
+  "thickness": 1
+},
+```
+
+Setting | Type | Description
+--- | --- | --- | ---
+`active` | `bool` | enable/disable changes to a particular type of line. if this is false the rest of the changes for a type of line will be ignored
+`dashed` | `bool` | enabled/disable making a type of line dashed
+`thickness` | `float` | change the size of a given line on-screen to be bigger or smaller. Vanilla game almost everything is 1.
+`colors` | `float[][4]` | an array of RGBA color settings that can be used in-game to color the given line
+
+The `color` variables below (`float[4]`) are RGBA colors. You can enter your colors as a number 0-255, or a float from 0 to 1. For example, pure red can be entered as `[255, 0, 0, 255]` (hex/web format) or `[1, 0, 0, 1]` (unity format). If you make the alpha channel `0`, you will probably not have a line at all. You can use a color picker like [the W3's](https://www.w3schools.com/colors/colors_picker.asp) or a color chart like [websitetip](http://websitetips.com/colorcharts/daxassist/)'s to find colors you like.
 
 For unity-style numbers, you can use the color picker and then divide the individual values by 255 to get the decimal you need. For example hex color `#66ff33` / rgb color `rgb(102, 255, 51)` can be entered directly as `[102, 255, 51, 1]` or converted from `[102/255, 255/255, 51/255, 1]`, which works out to `[0.4, 1, 0.2, 1]`.
 
-Setting | Type | Default | Description
---- | --- | --- | ---
-`directLineOfFireArcActive` | `bool` | `false` | change the look of the direct firing line arc
-`directLineOfFireArcColor` | `float[4]` | `[0, 255, 128, 255]` (light blue) | the color of the direct firing line arc. The default in vanilla is `[255, 0, 0, 255]` (red).
-`indirectLineOfFireArcActive` | `bool` | `true` | change the look of the indirect firing line arc
-`indirectLineOfFireArcColor` | `float[4]` | `[255, 128, 0, 255]` (golden orange) | the color of the indirect firing line arc. The default in vanilla is `[255, 0, 0, 255]` (red).
-`indirectLineOfFireArcDashed` | `bool` | `false` | make the indirect firing line arc a dashed line
-`indirectLineOfFireArcDashedThicknessMultiplier` | `float` | `1.75` | change how thick the indirect firing line looks when dashed
-`obstructedLineOfFireAttackerSideActive` | `bool` | false | change the look of the line of fire indicator when obstructed on the side nearest the attacker
-`obstructedLineOfFireAttackerSideColor` | `float[4]` | `[0, 64, 255, 255]` (blue) | line of fire color nearest the attacker when fire is obstructed
-`obstructedLineOfFireTargetSideActive` | `bool` | true | change the look of the line of fire indicator when obstructed on the side nearest the target
-`obstructedLineOfFireTargetSideColor` | `float[4]` | `[153, 0, 255, 230]` (purple) | line of fire color nearest the target when fire is obstructed
-`obstructedLineOfFireTargetSiteThicknessMultiplier` | `float` | `1.25` | change how thick the obstructed firing line looks on the target side
+You can read about why the color sets exist in the release where they were made: https://github.com/janxious/BTMLColorLOSMod/releases/tag/v0.6
 
-Here's some sample colors so you can see what I mean by RGB:
+### Keybind Settings
+
+Setting | Type | Description
+`nextColorKeyBinding` | `json` | container for setting up the keybinding. description of sub-attributes in this table 
+`nextColorKeyBinding`:`active` | `bool | enable/disable the ability to key bind to switch colors and set up the default keybinding (defaults to active)
+`nextColorKeyBinding`:`keys` | `string[]` | a series of keys you can press if this is active to switch to the next color set (defaults to shift+i)
+
+### General Settings
+
+Setting | Type | Description
+`debug` | `bool` | enabled/disable debug logging
+
+
+Here's some sample colors so you can see what I mean by RGBA:
 
 <img width="273" alt="screen shot 2018-05-28 at 7 53 19 pm" src="https://user-images.githubusercontent.com/50124/40633724-78a0fa12-62bf-11e8-9227-5bcbeae4a0ae.png">
 
