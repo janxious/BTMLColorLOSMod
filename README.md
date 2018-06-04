@@ -43,7 +43,7 @@ For each kind of line supported there is a key with its own settings in `mod.jso
 ```
 
 Setting | Type | Description
---- | --- | --- | ---
+--- | --- | ---
 `active` | `bool` | enable/disable changes to a particular type of line. if this is false the rest of the changes for a type of line will be ignored
 `dashed` | `bool` | enabled/disable making a type of line dashed
 `thickness` | `float` | change the size of a given line on-screen to be bigger or smaller. Vanilla game almost everything is 1.
@@ -55,9 +55,14 @@ For unity-style numbers, you can use the color picker and then divide the indivi
 
 You can read about why the color sets exist in the release where they were made: https://github.com/janxious/BTMLColorLOSMod/releases/tag/v0.6
 
+Here's some sample colors so you can see what I mean by RGBA:
+
+<img width="273" alt="screen shot 2018-05-28 at 7 53 19 pm" src="https://user-images.githubusercontent.com/50124/40633724-78a0fa12-62bf-11e8-9227-5bcbeae4a0ae.png">
+
 ### Keybind Settings
 
 Setting | Type | Description
+--- | --- | ---
 `nextColorKeyBinding` | `json` | container for setting up the keybinding. description of sub-attributes in this table 
 `nextColorKeyBinding`:`active` | `bool | enable/disable the ability to key bind to switch colors and set up the default keybinding (defaults to active)
 `nextColorKeyBinding`:`keys` | `string[]` | a series of keys you can press if this is active to switch to the next color set (defaults to shift+i)
@@ -65,12 +70,8 @@ Setting | Type | Description
 ### General Settings
 
 Setting | Type | Description
+--- | --- | ---
 `debug` | `bool` | enabled/disable debug logging
-
-
-Here's some sample colors so you can see what I mean by RGBA:
-
-<img width="273" alt="screen shot 2018-05-28 at 7 53 19 pm" src="https://user-images.githubusercontent.com/50124/40633724-78a0fa12-62bf-11e8-9227-5bcbeae4a0ae.png">
 
 ## More Screenshots
 
